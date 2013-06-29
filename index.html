@@ -1,0 +1,46 @@
+<div id="demo4">
+
+  <div class="row-fluid">
+    <div class="span11">
+      <p>Le plugin <b>demo4</b> permet d'expliquer simplement le code d'un plugin CRON pour S.A.R.A.H.</p>
+      <p>Le plugin est décrit dans le fichier <i>demo4.prop</i> :</p>
+      <pre>
+{
+  "cron" : {
+    "demo4"  : {
+      "name"       : "demo4",
+      "description": "Demo de plugin type CRON",
+      "version"    : "0.1",
+      "time"       : "0 8-21 * * *"
+    }
+  }
+}
+      </pre>
+      <p>En fonction de la configuration <code>time</code>, décrite au format CRON, le script <i>demo4.js</i> est exécuté.</p>
+      <p>La phrase &laquo; <i>Il est X heures</i> &raquo; est envoyée sur le <code>callback</code>.</p>
+      <p>Par exemple, avec une configuration CRON :
+        <ul>
+          <li>toutes les heures : <code>0 * * * *</code></li>
+          <li>toutes les heures entre 8h et 22h : <code>0 8-22 * * *</code></li>
+          <li>tous les 1/4 d'heure : <code>0,15,30,45 * * * *</code></li>
+        </ul>
+      </p>
+      <pre>
+exports.cron = function(callback, task){
+  var date = new Date;
+  var hours = date.getHours();
+  var minutes = date.getMinutes();
+
+  var text = "Il est " + hours + " heure";
+
+  if (minutes > 0) {
+    text = text + " " + minutes;
+  }
+
+  callback({'tts': text});
+}
+      </pre>
+    </div>
+  </div>
+
+</div>

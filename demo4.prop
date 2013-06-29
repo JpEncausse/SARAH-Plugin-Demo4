@@ -1,0 +1,10 @@
+{
+  "cron" : {
+    "demo4"  : {
+      "name"       : "demo4",
+      "description": "Demo de plugin type CRON",
+      "version"    : "0.1",
+      "time"       : "0 8-21 * * *"
+    }
+  }
+}
